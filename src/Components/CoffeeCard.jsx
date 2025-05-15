@@ -4,7 +4,7 @@ import { FaDeleteLeft } from 'react-icons/fa6';
 import { Link, } from 'react-router';
 import Swal from 'sweetalert2';
 
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee, setCoffees, coffees }) => {
     const { photo, name, price, quantity, _id } = coffee
 
     const handleDelete = (id) => {
@@ -32,6 +32,9 @@ const CoffeeCard = ({ coffee }) => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
+                            // Remove the coffee from webpage
+                            const remainingCoffee = coffees.filter(cof => cof._id !== _id);
+                            setCoffees(remainingCoffee)
                         }
                     })
 
