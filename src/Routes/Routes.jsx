@@ -3,6 +3,7 @@ import RootLayouts from "../Layouts/RootLayouts";
 import Home from "../Components/Home";
 import AddCoffee from "../Components/AddCoffee";
 import UpdateCoffee from "../Components/UpdateCoffee";
+import CoffeeDetails from "../Components/CoffeeDetails";
 
 export const router = createBrowserRouter([
     {
@@ -11,15 +12,23 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component: Home
+                loader: () => fetch('http://localhost:3000/coffees'),
+                Component: Home,
+                hydrateFallbackElement: <p>Loading..</p>
             },
             {
                 path: 'add-coffee',
                 Component: AddCoffee
             },
             {
-                path: 'update-coffee',
-                Component: UpdateCoffee
+                path: 'update-coffee/:id',
+                Component: UpdateCoffee,
+                loader: ({ params }) => fetch(`http://localhost:3000/coffees/${params.id}`)
+            },
+            {
+                path: 'coffee-details/:id',
+                Component: CoffeeDetails,
+                loader: ({ params }) => fetch(`http://localhost:3000/coffees/${params.id}`),
             }
         ]
     }

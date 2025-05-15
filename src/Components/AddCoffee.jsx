@@ -1,5 +1,4 @@
 import React from 'react';
-import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const AddCoffee = () => {
@@ -36,7 +35,8 @@ const AddCoffee = () => {
                     Swal.fire({
                         title: "Coffee added successfully!",
                         icon: "success",
-                        draggable: true
+                        draggable: true,
+                        timer: 1500
                     });
                 }
             })
@@ -56,10 +56,10 @@ const AddCoffee = () => {
                         <label className="label">Name</label>
                         <input type="text" className="input w-full" name='name' placeholder="Enter coffee name" />
                     </fieldset>
-                    {/* Chef */}
+                    {/* quantity */}
                     <fieldset className="fieldset   rounded-box  p-4">
-                        <label className="label">Chef</label>
-                        <input type="text" className="input w-full" name='chef' placeholder="Enter coffee chef" />
+                        <label className="label">Quantity</label>
+                        <input type="text" className="input w-full" name='quantity' placeholder="Enter coffee quantity" />
                     </fieldset>
                     {/* Supplier */}
                     <fieldset className="fieldset   rounded-box  p-4">
