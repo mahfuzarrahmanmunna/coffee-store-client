@@ -1,4 +1,4 @@
-import React, {  } from 'react';
+import React, { } from 'react';
 import { NavLink } from 'react-router';
 
 const Header = () => {
@@ -45,6 +45,16 @@ const Header = () => {
             }
             >
                 Sign up
+            </NavLink>
+        </li>
+        <li>
+            <NavLink to="/users" className={({ isActive }) =>
+                isActive
+                    ? "text-blue-500 font-bold border-b-2 border-blue-500"
+                    : "text-gray-700 hover:text-blue-500"
+            }
+            >
+                Users
             </NavLink>
         </li>
     </>
