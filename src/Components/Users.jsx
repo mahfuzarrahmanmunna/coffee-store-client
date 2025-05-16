@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 const Users = () => {
     const initialUsers = useLoaderData()
     const [users, setUsers] = useState(initialUsers);
+    console.log(users);
 
     const handleDelete = (id) => {
         console.log(id);
@@ -75,20 +76,20 @@ const Users = () => {
                                         <div className="avatar">
                                             <div className="mask mask-squircle h-12 w-12">
                                                 <img
-                                                    src={user.photo}
+                                                    src={user?.rest?.photo}
                                                     alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="font-bold">{user.name}</div>
-                                            <div className="text-sm opacity-50">{user.address}</div>
+                                            <div className="font-bold">{user?.rest?.name}</div>
+                                            <div className="text-sm opacity-50">{user?.rest?.address}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     {user.phone}
                                     <br />
-                                    <span className="badge badge-ghost badge-sm">{user?.rest?.email}</span>
+                                    <span className="badge badge-ghost badge-sm">{user?.email}</span>
                                 </td>
                                 <td>Purple</td>
                                 <th>
@@ -98,7 +99,6 @@ const Users = () => {
                                 </th>
                             </tr>)
                         }
-
                     </tbody>
                 </table>
             </div>
