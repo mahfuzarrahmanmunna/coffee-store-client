@@ -20,9 +20,9 @@ const Users = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 console.log(id);
-                const d = `http://localhost:3000/users/${id}`
-                console.log(d);
-                fetch(`http://localhost:3000/users/${id}`, {
+                // const d = `https://coffee-store-server-4opqoqak6-mahfuzarrahmanmunnas-projects.vercel.app/users${id}`
+                // console.log(d);
+                fetch(`https://coffee-store-server-4opqoqak6-mahfuzarrahmanmunnas-projects.vercel.app/users${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

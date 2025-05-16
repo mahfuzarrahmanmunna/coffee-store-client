@@ -21,7 +21,7 @@ const SignIn = () => {
                     email,
                     lastSignInTime: user?.metadata?.lastSignInTime
                 }
-                fetch(`http://localhost:3000/users`, {
+                fetch(`https://coffee-store-server-4opqoqak6-mahfuzarrahmanmunnas-projects.vercel.app/users`, {
                     method: "PATCH",
                     headers: {
                         'content-type': 'application/json'

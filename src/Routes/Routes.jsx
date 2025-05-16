@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                loader: () => fetch('http://localhost:3000/coffees'),
+                loader: () => fetch('https://coffee-store-server-ji3jnf62c-mahfuzarrahmanmunnas-projects.vercel.app/coffees'),
                 Component: Home,
                 hydrateFallbackElement: <p>Loading..</p>
             },
@@ -26,12 +26,12 @@ export const router = createBrowserRouter([
             {
                 path: 'update-coffee/:id',
                 Component: UpdateCoffee,
-                loader: ({ params }) => fetch(`http://localhost:3000/coffees/${params.id}`)
+                loader: ({ params }) => fetch(`https://coffee-store-server-ji3jnf62c-mahfuzarrahmanmunnas-projects.vercel.app/coffees/${params.id}`)
             },
             {
                 path: 'coffee-details/:id',
                 Component: CoffeeDetails,
-                loader: ({ params }) => fetch(`http://localhost:3000/coffees/${params.id}`),
+                loader: ({ params }) => fetch(`https://coffee-store-server-ji3jnf62c-mahfuzarrahmanmunnas-projects.vercel.app/coffees/${params.id}`),
             },
             {
                 path: '/sign-in',
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
             {
                 path: '/users',
                 Component: Users,
-                loader: () => fetch('http://localhost:3000/users'),
+                loader: () => fetch('https://coffee-store-server-ji3jnf62c-mahfuzarrahmanmunnas-projects.vercel.app/users'),
             }
         ]
     }
