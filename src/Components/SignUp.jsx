@@ -35,7 +35,7 @@ const SignUp = () => {
                     lastSignInTime: user?.metadata?.lastSignInTime,
                 }
                 // save the data into database
-                fetch('https://coffee-store-server-4opqoqak6-mahfuzarrahmanmunnas-projects.vercel.app/users', {
+                fetch('https://coffee-store-server-two-red.vercel.app/users', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
