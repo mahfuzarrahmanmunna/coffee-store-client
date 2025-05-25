@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { Link } from 'react-router';
+import axios from 'axios';
 
 const SignIn = () => {
     const { signIn } = use(AuthContext)
@@ -21,17 +22,26 @@ const SignIn = () => {
                     email,
                     lastSignInTime: user?.metadata?.lastSignInTime
                 }
-                fetch(`https://coffee-store-server-4opqoqak6-mahfuzarrahmanmunnas-projects.vercel.app/users`, {
-                    method: "PATCH",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(signInInfo)
-                })
-                    .then(res => res.json())
+
+                // Patch method with axios
+                axios.patch('http://localhost:3000/users', signInInfo)
                     .then(data => {
-                        console.log('after updated patch', data);
+                        console.log(data.data);
                     })
+
+
+                // Patch method with fetch the data into database
+                // fetch(`https://coffee-store-server-4opqoqak6-mahfuzarrahmanmunnas-projects.vercel.app/users`, {
+                //     method: "PATCH",
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(signInInfo)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log('after updated patch', data);
+                //     })
             })
             .catch(err => {
                 const code = err.code;

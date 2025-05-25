@@ -5,7 +5,7 @@ import CoffeeCard from './CoffeeCard';
 const Home = () => {
     const initialCoffees = useLoaderData()
     const [coffees, setCoffees] = useState(initialCoffees)
-    console.log(coffees);
+    console.log(initialCoffees);
 
     return (
         <div>

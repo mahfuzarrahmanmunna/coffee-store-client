@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router';
+import axios from 'axios';
 
 const SignUp = () => {
     const { createUser } = use(AuthContext)
@@ -34,27 +35,34 @@ const SignUp = () => {
                     creationTime: user?.metadata?.creationTime,
                     lastSignInTime: user?.metadata?.lastSignInTime,
                 }
-                // save the data into database
-                fetch('https://coffee-store-server-two-red.vercel.app/users', {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(userProfile)
-                })
-                    .then(res => res.json())
+
+                // user post with axios
+                axios.post('http://localhost:3000/users', userProfile)
                     .then(data => {
-                        if (data.insertedId) {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: "Sign Up successful",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            console.log('after adding into the database', data);
-                        }
+                        console.log(data.data);
                     })
+
+                // save the data into database with fetch
+                // fetch('http://localhost:3000/users', {
+                //     method: "POST",
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(userProfile)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         if (data.insertedId) {
+                //             Swal.fire({
+                //                 position: "center",
+                //                 icon: "success",
+                //                 title: "Sign Up successful",
+                //                 showConfirmButton: false,
+                //                 timer: 1500
+                //             });
+                //             console.log('after adding into the database', data);
+                //         }
+                //     })
                 console.log(user);
             })
             .catch(err => {

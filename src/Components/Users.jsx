@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
@@ -6,6 +7,24 @@ const Users = () => {
     const initialUsers = useLoaderData()
     const [users, setUsers] = useState(initialUsers);
     console.log(users);
+
+
+    // useEffect(() => {
+    //     fetch('/')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //         })
+    // }, [])
+
+
+    // useEffect(() => {
+    //     axios.get('/')
+    //         .then(data => {
+    //             console.log(data.data);
+    //         })
+    // }, [])
+
 
     const handleDelete = (id) => {
         console.log(id);
@@ -91,7 +110,7 @@ const Users = () => {
                                     <br />
                                     <span className="badge badge-ghost badge-sm">{user?.email}</span>
                                 </td>
-                                <td>Purple</td>
+                                <td>{user?.lastSignInTime}</td>
                                 <th>
                                     <button className="btn btn-ghost btn-xs">V</button>
                                     <button className="btn btn-ghost btn-xs">E</button>
