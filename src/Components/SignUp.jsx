@@ -37,13 +37,13 @@ const SignUp = () => {
                 }
 
                 // user post with axios
-                axios.post('http://localhost:3000/users', userProfile)
+                axios.post('https://coffee-store-server-two-red.vercel.app/users', userProfile)
                     .then(data => {
                         console.log(data.data);
                     })
 
                 // save the data into database with fetch
-                // fetch('http://localhost:3000/users', {
+                // fetch('https://coffee-store-server-two-red.vercel.app/users', {
                 //     method: "POST",
                 //     headers: {
                 //         'content-type': 'application/json'

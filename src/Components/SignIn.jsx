@@ -24,7 +24,7 @@ const SignIn = () => {
                 }
 
                 // Patch method with axios
-                axios.patch('http://localhost:3000/users', signInInfo)
+                axios.patch('https://coffee-store-server-two-red.vercel.app/users', signInInfo)
                     .then(data => {
                         console.log(data.data);
                     })

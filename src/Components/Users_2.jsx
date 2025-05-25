@@ -5,7 +5,7 @@ const Users_2 = () => {
     const { ispPending, isError, error, data: users } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:3000/users');
+            const res = await fetch('https://coffee-store-server-two-red.vercel.app/users');
             return res.json()
         }
     })
@@ -14,7 +14,7 @@ const Users_2 = () => {
     // const [users, setUsers] = useState([])
 
     // useEffect(() => {
-    //     fetch('http://localhost:3000/users')
+    //     fetch('https://coffee-store-server-two-red.vercel.app/users')
     //         .then(res => res.json())
     //         .then(data => {
     //             console.log(data);
