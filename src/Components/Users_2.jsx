@@ -1,17 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 
 const Users_2 = () => {
-    const [users, setUsers] = useState([])
+    const { ispPending, isError, error, data: users } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:3000/users');
+            return res.json()
+        }
+    })
 
-    useEffect(() => {
-        fetch('http://localhost:3000/users')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setUsers(data)
-            })
-    }, [])
+
+    // const [users, setUsers] = useState([])
+
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/users')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             setUsers(data)
+    //         })
+    // }, [])
 
     const handleDelete = (id) => {
         console.log(id);
@@ -53,6 +62,16 @@ const Users_2 = () => {
             }
         });
     }
+
+    if (ispPending) {
+        return <span className="loading loading-ring loading-xl"></span>
+    }
+
+    if (isError) {
+        <p>
+            {error.message}
+        </p>
+    }
     return (
         <div>
             {/* <div className="text-3xl">{users.length}</div> */}
@@ -73,7 +92,7 @@ const Users_2 = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            users.map((user, index) => <tr key={user._id}>
+                            users?.map((user, index) => <tr key={user._id}>
                                 <th>
                                     {index + 1}
                                 </th>
