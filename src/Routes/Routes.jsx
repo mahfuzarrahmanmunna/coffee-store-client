@@ -8,6 +8,8 @@ import SignIn from "../Components/SignIn";
 import SignUp from "../Components/SignUp";
 import Users from "../Components/Users";
 import Users_2 from "../Components/Users_2";
+import PrivateRoutes from "../Private/PrivateRoutes";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 export const router = createBrowserRouter([
     {
@@ -18,11 +20,13 @@ export const router = createBrowserRouter([
                 index: true,
                 loader: () => fetch('https://coffee-store-server-two-red.vercel.app/coffees'),
                 Component: Home,
-                hydrateFallbackElement: <p>Loading..</p>
+                hydrateFallbackElement: <LoadingSpinner />
             },
             {
                 path: 'add-coffee',
-                Component: AddCoffee
+                element: <PrivateRoutes>
+                    <AddCoffee />
+                </PrivateRoutes>
             },
             {
                 path: 'update-coffee/:id',

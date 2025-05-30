@@ -1,11 +1,11 @@
-import React, { use } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router';
 import axios from 'axios';
+import useAuth from '../Hooks/useAuth';
 
 const SignUp = () => {
-    const { createUser } = use(AuthContext)
+    const { createUser } = useAuth()
     console.log(createUser);
 
     const handleSignUP = e => {
@@ -43,6 +43,7 @@ const SignUp = () => {
                     })
 
                 // save the data into database with fetch
+                
                 // fetch('https://coffee-store-server-two-red.vercel.app/users', {
                 //     method: "POST",
                 //     headers: {

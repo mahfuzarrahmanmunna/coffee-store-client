@@ -26,27 +26,7 @@ const Header = () => {
                 Add Coffee
             </NavLink>
         </li>
-        {/* SignIn*/}
-        <li>
-            <NavLink to="/sign-in" className={({ isActive }) =>
-                isActive
-                    ? "text-blue-500 font-bold border-b-2 border-blue-500"
-                    : "text-gray-700 hover:text-blue-500"
-            }
-            >
-                Sign in
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to="/sign-up" className={({ isActive }) =>
-                isActive
-                    ? "text-blue-500 font-bold border-b-2 border-blue-500"
-                    : "text-gray-700 hover:text-blue-500"
-            }
-            >
-                Sign up
-            </NavLink>
-        </li>
+
         <li>
             <NavLink to="/users" className={({ isActive }) =>
                 isActive
@@ -70,7 +50,7 @@ const Header = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar flex justify-between bg-base-100 shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -89,9 +69,29 @@ const Header = () => {
                     {link}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
-            </div>
+            <ul className="navbar-end flex gap-5">
+                {/* SignIn*/}
+                <li>
+                    <NavLink to="/sign-in" className={({ isActive }) =>
+                        isActive
+                            ? "text-blue-500 font-bold border-b-2 border-blue-500"
+                            : "text-gray-700 hover:text-blue-500"
+                    }
+                    >
+                        Sign in
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/sign-up" className={({ isActive }) =>
+                        isActive
+                            ? "text-blue-500 font-bold border-b-2 border-blue-500"
+                            : "text-gray-700 hover:text-blue-500"
+                    }
+                    >
+                        Sign up
+                    </NavLink>
+                </li>
+            </ul>
         </div>
     );
 };
