@@ -1,31 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { auth } from '../Firebase/firebase.init';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 
 const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
     // create User with google
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    // const currentUser = auth.currentUser
-    // console.log(currentUser);
 
-    // const deleteUser = async () => {
-    //     if (auth.currentUser) {
-    //         await 
-    //     }
-    // }
 
-    // signin with email and password
     const signIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
+
+
+    // save the data into firebase
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setLoading(false)
+            setUser(currentUser)
+        });
+        return () => unsubscribe()
+    }, [])
+
     const userInfo = {
+        user,
         createUser,
-        signIn
+        signIn,
+        setLoading,
+        loading
     }
     return (
         <AuthContext value={userInfo}>
